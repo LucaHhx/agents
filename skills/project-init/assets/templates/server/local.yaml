@@ -1,0 +1,124 @@
+# ========================================
+# 系统配置
+# ========================================
+system:
+  name: {{PROJECT_NAME}}
+  projectRoot: ""  # 项目根目录（用于去除日志中的绝对路径前缀）
+  migrate: true
+  redis: true
+
+# ========================================
+# 服务器配置
+# ========================================
+server:
+  host: 0.0.0.0           # 服务器监听地址
+  port: 8082              # 服务器监听端口
+  mode: debug             # 运行模式: debug, release, test
+  readTimeout: 60         # 读取超时时间（秒）
+  writeTimeout: 60        # 写入超时时间（秒）
+  maxHeaderBytes: 16      # 最大请求头大小（MB）
+
+# ========================================
+# MySQL 数据库配置
+# ========================================
+mysql:
+  # 基础连接配置
+  host: 127.0.0.1         # 数据库服务器地址
+  port: 3306              # 数据库服务器端口
+  user: root              # 数据库用户名
+  password: "changeme"    # 数据库密码
+  dbname: {{PROJECT_NAME}}          # 数据库名称
+
+  # 连接参数配置
+  charset: utf8mb4        # 字符集（utf8mb4支持emoji表情）
+  parseTime: "True"       # 自动解析时间类型为 time.Time
+  loc: "Local"            # 时区设置（Local为本地时区）
+
+  # GORM MySQL 驱动配置
+  defaultStringSize: 256              # 字符串字段默认长度
+  disableDatetimePrecision: false     # 是否禁用日期时间精度
+  dontSupportRenameIndex: false       # 不使用 ALTER INDEX 重命名索引
+  dontSupportRenameColumn: false      # 不使用 ALTER COLUMN 重命名列（改用 CHANGE）
+  skipInitializeWithVersion: false    # 是否跳过根据版本自动配置
+
+  # 连接池配置
+  maxIdleConns: 10        # 最大空闲连接数
+  maxOpenConns: 100       # 最大打开连接数
+  connMaxLifetime: 3600   # 连接最大生存时间（秒）
+  connMaxIdleTime: 600    # 连接最大空闲时间（秒）
+
+  # 日志配置
+  logEnabled: true        # 是否启用MySQL日志
+  logLevel: info          # 日志级别: silent, error, warn, info
+  logSlowQuery: 200       # 慢查询阈值（毫秒），0表示不记录慢查询
+  logColorful: true       # 是否启用彩色日志（控制台输出时启用）
+  logFile: mysql          # 日志文件名（实际文件：logs/2025-12-14/mysql.log）
+  logIgnoreTrace: true    # 是否忽略未找到记录的错误日志（忽略 ErrRecordNotFound）
+
+# ========================================
+# Redis 缓存配置
+# ========================================
+redis:
+  host: 127.0.0.1         # Redis 服务器地址
+  port: 6379              # Redis 服务器端口
+  password: ""            # Redis 密码
+  db: 0                   # 使用的数据库编号（0-15）
+  poolSize: 10            # 连接池大小
+  minIdleConns: 5         # 最小空闲连接数
+  maxRetries: 3           # 最大重试次数
+  dialTimeout: 5          # 连接超时时间（秒）
+  readTimeout: 3          # 读取超时时间（秒）
+  writeTimeout: 3         # 写入超时时间（秒）
+
+# ========================================
+# 日志配置
+# ========================================
+log:
+  level: debug            # 日志级别: debug, info, warn, error
+  format: console         # 日志格式: json, console (console支持彩色输出)
+  output: both            # 输出位置: stdout, file, both (同时输出到控制台和文件)
+  logDir: logs            # 日志文件根目录
+  enableColor: true       # 是否启用彩色输出 (仅在 format=console 时生效)
+  showCaller: true        # 是否显示调用者信息
+  showStacktrace: false   # 是否显示堆栈跟踪 (仅 error 级别)
+  timeFormat: "2006-01-02 15:04:05.000"  # 时间格式
+  splitByLevel: true      # 是否按日志级别分文件 (info.log, error.log)
+  splitByDate: true       # 是否按日期分文件夹 (logs/2024-12-14/)
+  maxSize: 100            # 单个日志文件最大大小（MB）
+  maxBackups: 5           # 保留的旧日志文件数量
+  maxAge: 30              # 日志文件保留天数
+  compress: true          # 是否压缩旧日志文件
+
+# ========================================
+# 跨域配置
+# ========================================
+cors:
+  enabled: true           # 是否启用跨域
+  allowOrigins:           # 允许的来源
+    - "*"
+  allowMethods:           # 允许的HTTP方法
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowHeaders:           # 允许的请求头
+    - Origin
+    - Content-Type
+    - Authorization
+  exposeHeaders:          # 暴露的响应头
+    - Content-Length
+  allowCredentials: true  # 是否允许携带认证信息
+  maxAge: 7200            # 预检请求缓存时间（秒）
+
+# ========================================
+# 文件上传配置
+# ========================================
+upload:
+  maxSize: 10             # 最大文件大小（MB）
+  allowTypes:             # 允许的文件类型
+    - image/jpeg
+    - image/png
+    - image/gif
+    - application/pdf
+  savePath: uploads       # 文件保存路径

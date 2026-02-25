@@ -1,0 +1,24 @@
+# 项目规范 / Project Specs
+# 创建日期: {{DATE}}
+
+coding:
+  language: ""          # 主要语言
+  style_guide: ""       # 代码风格指南 (e.g., PEP 8, Airbnb)
+  linter: ""            # 代码检查工具 (e.g., ESLint, Ruff)
+  formatter: ""         # 格式化工具 (e.g., Prettier, Black)
+
+naming:
+  files: ""             # 文件命名 (e.g., kebab-case, snake_case)
+  variables: ""         # 变量命名 (e.g., camelCase)
+  components: ""        # 组件命名 (e.g., PascalCase)
+  branches: ""          # 分支命名 (e.g., feature/xxx, fix/xxx)
+
+git:
+  branch_strategy: ""   # 分支策略 (e.g., Git Flow, GitHub Flow)
+  commit_format: ""     # 提交格式 (e.g., Conventional Commits)
+  review_required: true # 是否需要代码审查
+
+testing:
+  framework: ""         # 测试框架 (e.g., Jest, Pytest)
+  min_coverage: ""      # 最低覆盖率 (e.g., 80%)
+  types: []             # 测试类型 (e.g., [unit, integration, e2e])

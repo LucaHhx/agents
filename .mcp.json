@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "pm-mcp": {
+      "command": "npx",
+      "args": [
+        "pm-mcp"
+      ],
+      "env": {}
+    }
+  }
+}
