@@ -28,6 +28,7 @@ IMPORTANT: 所有 Claude 交互、任务分发和报告均使用中文。
 
 | 命令 | Agent | 模型 | 用途 |
 |------|-------|------|------|
+| `/hz-init` | — | — | 初始化新项目并链接 HZ agents |
 | `/hz-pm` | project-manager | opus | 需求规划、任务编排、文档管理 |
 | `/hz-backend` | backend-dev | sonnet | Go 后端实现（API/Service/Model） |
 | `/hz-frontend` | frontend-dev | sonnet | React 19 前端实现（组件/Store） |

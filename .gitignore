@@ -1,9 +1,6 @@
-# Claude Code local config
-.claude/
-
-# macOS
 .DS_Store
-
-# Python cache
-__pycache__/
 *.pyc
+__pycache__/
+.idea/
+.vscode/
+*.log

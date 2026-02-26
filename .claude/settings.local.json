@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(chmod:*)",
+      "Bash(echo:*)",
+      "Bash(pip3 install:*)",
+      "Bash(ls:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go build:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(/Users/luca/work/agents/.claude/skills/skill-creator/scripts/init_skill.py pm-mcp-guide --path /Users/luca/work/agents/.claude/skills)",
+      "Bash(/Users/luca/work/agents/.claude/skills/skill-creator/scripts/package_skill.py /Users/luca/work/agents/skills/pm-mcp-guide)",
+      "Bash(for f in agents/*.md)",
+      "Bash(do echo \"=== Validating $f ===\")",
+      "Bash(bash skills/agent-create/scripts/validate-agent.sh \"$f\")",
+      "Bash(done)",
+      "Bash(do echo \"=== 验证 $f ===\")",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(test:*)",
+      "WebFetch(domain:docs.claude.com)",
+      "Bash(go mod init:*)",
+      "Bash(go get:*)",
+      "Bash(npx --package typescript tsc:*)",
+      "Bash(go vet:*)",
+      "Bash(timeout 5 go run:*)",
+      "mcp__pm-mcp__start_process",
+      "Bash(curl:*)",
+      "mcp__pm-mcp__terminate_process",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git -C /Users/luca/work/agents push -u origin main)",
+      "Bash(claude --version)"
+    ]
+  }
+}
