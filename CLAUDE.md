@@ -60,6 +60,7 @@ IMPORTANT: 以下技术栈是本系统的固定约束，所有 Agent（包括 br
 
 IMPORTANT: 以下规则必须严格遵守：
 
+0. **文档实时更新（最高优先级）** — 任何 Agent 完成任务后，必须立即更新 `docs/plans/*/tasks.md` 中对应任务的状态（待办→已完成），并在 `docs/plans/*/changelog.md` 中添加变更记录。Git commit message 必须引用任务 ID。**不更新文档 = 任务未完成。** 这条规则适用于所有 Agent，无论是通过 PM 编排还是直接调用。
 1. **技术栈不可替换** — 所有设计和实现必须使用上述固定技术栈，brainstorming 探索的是功能方案而非技术选型
 2. **先 brainstorming 再实现** — 任何新功能必须先通过 brainstorming skill 探索需求，获得用户批准后才能开始实现
 3. **Agent 通信全部经过 PM** — Agent 之间不直接分发任务，所有协调通过 project-manager

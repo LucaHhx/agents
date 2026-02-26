@@ -117,3 +117,12 @@ git diff HEAD~1..HEAD
 - git 历史不足（首次 commit）→ BASE_SHA 使用空树 hash `4b825dc642cb6eb9a060e54bf899d69f82ecf73`
 - 变更文件列表为空 → 提示当前无可审查变更
 - 指定文件不存在 → 报告未找到，列出可用文件
+
+## 文档更新（必须）
+
+Agent 完成任务后，必须确认以下文档已更新：
+1. `docs/plans/*/tasks.md` — 对应任务状态更新为「已完成」
+2. `docs/plans/*/changelog.md` — 添加变更条目
+3. Git commit message 引用任务 ID
+
+如果 Agent 的报告中未包含文档更新确认，提醒 Agent 补充。

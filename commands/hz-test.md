@@ -175,3 +175,12 @@ $ARGUMENTS
 - 端口被占用 → 通过 `mcp__pm-mcp__grep_logs` 搜索 `EADDRINUSE`，终止旧进程后重启
 - agent-browser 未安装 → 降级为 curl 测试 API，跳过 UI 测试并在报告中注明
 - `$ARGUMENTS` 和测试计划都为空 → 作为降级方案运行 `go test ./...` + `npm test`
+
+## 文档更新（必须）
+
+Agent 完成任务后，必须确认以下文档已更新：
+1. `docs/plans/*/tasks.md` — 对应任务状态更新为「已完成」
+2. `docs/plans/*/changelog.md` — 添加变更条目
+3. Git commit message 引用任务 ID
+
+如果 Agent 的报告中未包含文档更新确认，提醒 Agent 补充。

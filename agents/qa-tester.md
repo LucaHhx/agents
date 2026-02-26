@@ -249,3 +249,9 @@ agent-browser screenshot --full docs/plans/<name>/testing/full-page.png
 - 所有测试通过：仍然执行手动集成检查后才给出通过结论
 - agent-browser 未安装：降级为 curl 测试 API，跳过 UI 测试并在报告中注明
 - 端口被占用：通过 `mcp__pm-mcp__grep_logs` 搜索 `EADDRINUSE`，终止旧进程后重启
+
+**额外文档更新职责：**
+测试完成后，除了更新 testing.md，还必须：
+1. **更新 tasks.md**：将测试任务状态改为「已完成」
+2. **更新 changelog.md**：记录测试执行结果（通过数/失败数）
+3. 如果是里程碑最终测试通过，在 changelog.md 中标注里程碑完成

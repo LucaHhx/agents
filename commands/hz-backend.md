@@ -107,3 +107,12 @@ $ARGUMENTS
 - 后端目录不存在 → 提示先初始化项目（project-init）
 - HZ 标记不存在 → 标注"无 HZ 标记，按常规 Go 项目结构实现"
 - `$ARGUMENTS` 为空 → 搜索 tasks.md 中 backend-dev 负责的未完成任务；如无则提示
+
+## 文档更新（必须）
+
+Agent 完成任务后，必须确认以下文档已更新：
+1. `docs/plans/*/tasks.md` — 对应任务状态更新为「已完成」
+2. `docs/plans/*/changelog.md` — 添加变更条目
+3. Git commit message 引用任务 ID
+
+如果 Agent 的报告中未包含文档更新确认，提醒 Agent 补充。

@@ -94,3 +94,12 @@ $ARGUMENTS
 
 - 前端目录不存在 → 提示先初始化项目
 - `$ARGUMENTS` 为空 → 搜索 tasks.md 中 design 类型的未完成任务；如无则提示提供描述
+
+## 文档更新（必须）
+
+Agent 完成任务后，必须确认以下文档已更新：
+1. `docs/plans/*/tasks.md` — 对应任务状态更新为「已完成」
+2. `docs/plans/*/changelog.md` — 添加变更条目
+3. Git commit message 引用任务 ID
+
+如果 Agent 的报告中未包含文档更新确认，提醒 Agent 补充。

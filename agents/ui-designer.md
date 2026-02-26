@@ -104,3 +104,15 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "WebFetch", "WebSearch"]
 - 没有现有设计系统：建立基础 token 和模式
 - 仅移动端功能：专注 Capacitor 约束和触摸交互
 - 复杂状态：推荐使用 Zustand store 切片结构
+
+**文档更新职责（硬性要求）：**
+每个任务完成后，你必须执行以下文档更新，不可跳过：
+
+1. **更新 tasks.md**：将对应任务 ID 的状态从「待办」改为「已完成」
+   - 在任务总览表和任务详情中都要更新
+   - 格式：`**状态**: 已完成`
+2. **更新 changelog.md**：在计划的 changelog.md 中添加变更条目
+   - 记录完成了什么、修改了哪些文件
+3. **Git commit message** 中引用任务 ID：如 `feat(mvp-012): implement layout components`
+
+如果你不确定 tasks.md 的路径，搜索 `docs/plans/*/tasks.md`。如果任务没有对应的计划文档，跳过此步骤。
