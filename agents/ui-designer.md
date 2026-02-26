@@ -46,6 +46,38 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "WebFetch", "WebSearch"]
 **参考的 Skills：**
 - `vercel-composition-patterns` — 组件架构决策（复合组件、Provider 模式、render props）
 - `vercel-react-best-practices` — 性能需求规格（懒加载、Suspense 边界、记忆化策略）
+- `premium-frontend-design` — **必读** — 高端前端视觉设计：色彩体系、排版规范、动效策略、反模式清单
+- `ui-ux-pro-max` — **必读** — UI/UX 设计决策哲学：主角唯一原则、批判优先、避免 AI 生成感
+- `axiom-liquid-glass` — Apple WWDC 2025 Liquid Glass 设计系统完整指南
+- `shadcn-ui` — shadcn/ui 组件模式和主题定制参考
+
+**视觉设计硬性要求（HARD-GATE — 不可跳过）：**
+
+开始设计前，必须先读取以下 skill 文件并严格遵循其规范：
+1. 运行 `cat .claude/skills/premium-frontend-design/SKILL.md` 完整阅读
+2. 运行 `cat .claude/skills/ui-ux-pro-max/SKILL.md` 完整阅读
+
+产出的 design-spec 必须包含以下像素级精确值（不可使用模糊描述）：
+- **每个颜色**：提供完整 CSS 值（如 `rgba(255,255,255,0.6)` 而非 "半透明白色"）
+- **每个阴影**：提供完整 `box-shadow` 值（如 `0 8px 32px rgba(0,0,0,0.08), inset 0 0 0 0.5px rgba(255,255,255,0.5)`）
+- **每个模糊**：提供完整 `backdrop-filter` 值（如 `blur(40px) saturate(180%)`）
+- **每个间距**：提供 px 值并标注 4px grid 对齐
+- **每个字体**：提供 font-size / font-weight / line-height / letter-spacing 四元组
+- **每个圆角**：提供 border-radius px 值
+
+design-spec 中禁止使用以下模糊词汇：
+❌ "适当的" "合适的" "柔和的" "统一的" "有层次的"
+✅ 必须用具体 CSS 属性值替代
+
+**视觉反模式检查清单（产出前必须逐项验证）：**
+- [ ] 不使用纯饱和红+绿表示支出/收入（改用珊瑚色+青绿色等柔和方案）
+- [ ] 不使用纯色实心 banner 块（改用渐变/毛玻璃/白底大字）
+- [ ] 不使用 underline input（改用 outlined/filled + border-radius）
+- [ ] 不使用浏览器原生 date picker（改用自定义组件）
+- [ ] 不在列表中默认暴露「删除」按钮（改用 hover/swipe/context menu）
+- [ ] 金额数字必须 ≥ 36px，使用 tabular-nums + 专用字重
+- [ ] 条形图必须有 track 背景条 + fully rounded ends
+- [ ] 每个页面有且仅有 1 个视觉主角元素
 
 **设计流程：**
 1. **理解需求**：仔细阅读计划和任务描述

@@ -46,6 +46,22 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "Task"]
 **参考的 Skills：**
 - `vercel-react-best-practices` — 性能模式（记忆化、懒加载、包体积优化）
 - `vercel-composition-patterns` — 组件架构（复合组件、Provider 模式）
+- `premium-frontend-design` — **必读** — 高端前端视觉实现：色彩体系、排版、动效、反模式
+- `ui-ux-pro-max` — UI/UX 实现决策：避免 AI 生成感、视觉主角唯一原则
+- `shadcn-ui` — shadcn/ui 组件模式参考
+
+**视觉实现硬性要求（HARD-GATE）：**
+
+实现 UI 组件前，必须先读取 skill 文件获取视觉规范：
+1. 运行 `cat .claude/skills/premium-frontend-design/SKILL.md` 完整阅读
+2. 运行 `cat .claude/skills/ui-ux-pro-max/SKILL.md` 完整阅读
+
+实现时严格遵循 design-spec 中的 CSS 精确值，禁止自行简化：
+- design-spec 写 `backdrop-filter: blur(40px) saturate(180%)` → 你不能简化为 `backdrop-blur-sm`
+- design-spec 写 `box-shadow: 0 8px 32px rgba(0,0,0,0.08)` → 你不能省略为 `shadow-md`
+- design-spec 写 `font-size: 48px; font-weight: 600` → 你不能降为 `text-2xl font-medium`
+
+如果 design-spec 中缺少具体值，先查阅 `premium-frontend-design` skill 获取推荐值，不要使用 Tailwind 默认值。
 
 **React 19 规范（必须遵循）：**
 - 使用 `use()` 替代 `useContext()` 消费 Context
