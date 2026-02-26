@@ -47,11 +47,17 @@ Trigger: User says "初始化项目文档", "创建文档结构", or similar.
 
 Trigger: User says "新建计划", "创建计划", or similar.
 
+<HARD-GATE>
+MUST run the script to create plan files. Do NOT manually create files — the script ensures all 5 files + testing/ directory are generated. Manual creation ALWAYS leads to missing files.
+</HARD-GATE>
+
 1. Ask user for plan name (kebab-case) and brief description if not provided
-2. Run `scripts/new_plan.py <project-root>/docs/plans <plan-name>`
+2. **MUST** run `scripts/new_plan.py <project-root>/docs/plans <plan-name>` — this generates all 5 files + testing/
 3. Fill in `plan.md` with goals, scope, and timeline based on user context
 4. Fill in `tasks.md` with initial task breakdown
-5. Initialize other files with header entries
+5. Fill in `decisions.md` with initial design decisions (DO NOT leave empty)
+6. Fill in `changelog.md` with plan creation entry
+7. Fill in `testing.md` with test plan outline
 
 ### 3. Update Operations
 

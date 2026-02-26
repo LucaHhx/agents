@@ -81,7 +81,9 @@ $ARGUMENTS
 
 ### 期望产出
 按 PM 报告格式输出：计划概览、编排决策、当前状态、下一步动作。
-新需求 → 调用 brainstorming 后创建完整计划文档（架构和 specs.yaml 必须基于固定技术栈）。
+新需求 → 调用 brainstorming 后，**必须通过脚本创建计划目录**：
+  `python3 .claude/skills/project-docs/scripts/new_plan.py docs/plans <plan-name>`
+  脚本自动生成 5 个文件 + testing/ 目录，然后再填充内容。禁止手动创建单个文件。
 状态查询 → 汇总所有相关任务完成情况。
 ```
 

@@ -71,7 +71,12 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "Task", "WebSearch", "T
 
 **编排流程：**
 1. 用户需求 → 调用 `brainstorming` skill 探索需求
-2. 创建计划：在 `docs/plans/<name>/` 下生成 plan.md、tasks.md、decisions.md、changelog.md、testing.md
+2. 创建计划（**必须通过脚本**）：
+   ```bash
+   python3 .claude/skills/project-docs/scripts/new_plan.py docs/plans <plan-name>
+   ```
+   脚本会自动生成完整的 5 个文件 + testing/ 目录（plan.md, tasks.md, decisions.md, changelog.md, testing.md）。
+   **禁止手动创建文件替代脚本**——手写会遗漏文件。脚本生成后再填充内容。
 3. 分析任务依赖 → 决定顺序执行还是并行执行
 4. 如果有 UI 需求 → 先分发给 `ui-designer` 产出设计规格
 5. 分发实现任务给 `backend-dev` 和/或 `frontend-dev`
@@ -103,7 +108,8 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "Task", "WebSearch", "T
 ```
 
 **文档管理：**
-- 创建：plan.md、tasks.md、decisions.md、changelog.md、testing.md
+- 创建：**必须通过 `new_plan.py` 脚本创建**，确保 5 个文件 + testing/ 目录完整生成
+- 禁止手动创建单个文件——会导致遗漏（已知 Bug：PM 曾跳过脚本直接写文件，导致缺少 decisions.md/changelog.md/testing.md）
 - 更新：tasks.md（状态：待办→进行中→已完成/已取消）、decisions.md（新增 DR）、changelog.md（里程碑）
 - 更新：`docs/CHANGELOG.md`（项目级里程碑）
 - 任务状态：待办、进行中、已完成、已取消
