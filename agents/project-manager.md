@@ -71,12 +71,15 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "Task", "WebSearch", "T
 
 **编排流程：**
 1. 用户需求 → 调用 `brainstorming` skill 探索需求
-2. 创建计划（**必须通过脚本**）：
-   ```bash
-   python3 .claude/skills/project-docs/scripts/new_plan.py docs/plans <plan-name>
-   ```
-   脚本会自动生成完整的 5 个文件 + testing/ 目录（plan.md, tasks.md, decisions.md, changelog.md, testing.md）。
-   **禁止手动创建文件替代脚本**——手写会遗漏文件。脚本生成后再填充内容。
+2. 创建计划：在 `docs/plans/<name>/` 下生成完整文档。可以使用脚本 `python3 .claude/skills/project-docs/scripts/new_plan.py docs/plans <plan-name>` 快速生成，也可以手动创建，但**必须包含全部 5 个文件 + testing/ 目录**：
+   - `plan.md` — 计划概览
+   - `tasks.md` — 任务分解
+   - `decisions.md` — 决策记录（至少记录核心设计决策）
+   - `changelog.md` — 变更日志（至少记录计划创建）
+   - `testing.md` — 测试计划（至少定义测试范围）
+   - `testing/` — 测试资产目录
+   
+   <HARD-GATE>创建计划后必须验证：`ls docs/plans/<name>/` 确认 5 个 .md 文件和 testing/ 目录全部存在。缺少任何一个 = 计划未创建完成。</HARD-GATE>
 3. 分析任务依赖 → 决定顺序执行还是并行执行
 4. 如果有 UI 需求 → 先分发给 `ui-designer` 产出设计规格
 5. 分发实现任务给 `backend-dev` 和/或 `frontend-dev`
@@ -108,8 +111,8 @@ tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "Task", "WebSearch", "T
 ```
 
 **文档管理：**
-- 创建：**必须通过 `new_plan.py` 脚本创建**，确保 5 个文件 + testing/ 目录完整生成
-- 禁止手动创建单个文件——会导致遗漏（已知 Bug：PM 曾跳过脚本直接写文件，导致缺少 decisions.md/changelog.md/testing.md）
+- 创建：可用脚本或手写，但**必须确保 5 个文件 + testing/ 目录全部存在**（plan.md, tasks.md, decisions.md, changelog.md, testing.md）
+- 创建后运行 `ls docs/plans/<name>/` 自检完整性
 - 更新：tasks.md（状态：待办→进行中→已完成/已取消）、decisions.md（新增 DR）、changelog.md（里程碑）
 - 更新：`docs/CHANGELOG.md`（项目级里程碑）
 - 任务状态：待办、进行中、已完成、已取消

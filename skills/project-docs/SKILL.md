@@ -47,17 +47,19 @@ Trigger: User says "初始化项目文档", "创建文档结构", or similar.
 
 Trigger: User says "新建计划", "创建计划", or similar.
 
-<HARD-GATE>
-MUST run the script to create plan files. Do NOT manually create files — the script ensures all 5 files + testing/ directory are generated. Manual creation ALWAYS leads to missing files.
-</HARD-GATE>
-
 1. Ask user for plan name (kebab-case) and brief description if not provided
-2. **MUST** run `scripts/new_plan.py <project-root>/docs/plans <plan-name>` — this generates all 5 files + testing/
+2. Create plan directory with all required files. Two options:
+   - **Option A (recommended):** Run `scripts/new_plan.py <project-root>/docs/plans <plan-name>` — auto-generates all files from templates
+   - **Option B:** Manually create files — but you MUST create ALL of them
 3. Fill in `plan.md` with goals, scope, and timeline based on user context
 4. Fill in `tasks.md` with initial task breakdown
 5. Fill in `decisions.md` with initial design decisions (DO NOT leave empty)
 6. Fill in `changelog.md` with plan creation entry
 7. Fill in `testing.md` with test plan outline
+
+<HARD-GATE>
+After creating a plan, VERIFY completeness: `ls docs/plans/<name>/` must show ALL of: plan.md, tasks.md, decisions.md, changelog.md, testing.md, testing/. Missing any file = plan creation incomplete.
+</HARD-GATE>
 
 ### 3. Update Operations
 
